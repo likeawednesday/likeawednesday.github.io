@@ -1,7 +1,7 @@
 ---
 layout: page
-title: project 4
-description: another without an image
+title: SQLite
+description: BeautifulSoup, sqlite basic query
 img:
 importance: 3
 category: fun

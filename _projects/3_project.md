@@ -1,9 +1,9 @@
 ---
 layout: page
-title: project 3
-description: a project that redirects to another website
+title: R Basics
+description: basics of R libraries, mutating, selection, binds, splits, concat
 img: assets/img/7.jpg
-redirect: https://unsplash.com
+redirect: none
 importance: 3
 category: work
 ---

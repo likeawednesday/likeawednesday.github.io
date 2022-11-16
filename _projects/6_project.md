@@ -1,7 +1,7 @@
 ---
 layout: page
-title: project 6
-description: a project with no image
+title: Visualizations
+description: visualizations in Python, R, and Power BI
 img:
 importance: 4
 category: fun
