@@ -2,7 +2,7 @@
 layout: about
 title: about
 permalink: /
-subtitle: <a href='#'>Affiliations</a>. Address. Contacts. Moto. Etc.
+subtitle: <a href='#'>Affiliations</a>. Transparency | Analysis | Insight
 
 profile:
   align: right
@@ -21,6 +21,8 @@ social: true  # includes social icons at the bottom of the page
 Hello and welcome to my data science/coding portfolio!
 
 Data science, to me, is using computers to make predictions and solve problems. While data science is my most recent degree, my previous degrees and interests have all led me here. Both history and accounting are both forms of data analysis - data science just takes the analysis ability of a single brain and amplifies it, which I think is pretty exciting!
+
+Please take a look around!
 
 Put your address / P.O. box / other info right below your picture. You can also disable any these elements by editing `profile` property of the YAML header of your `_pages/about.md`. Edit `_bibliography/papers.bib` and Jekyll will render your [publications page](/al-folio/publications/) automatically.
 
