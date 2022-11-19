@@ -1,81 +1,123 @@
 ---
 layout: page
 title: R Basics
-description: basics of R libraries, mutating, selection, binds, splits, concat
-img: assets/img/7.jpg
+description: R basics in markdown
+img: assets/img/2.jpg
 redirect: none
 importance: 4
 category: work
 ---
 
-Every project has a beautiful feature showcase page.
-It's easy to include images in a flexible 3-column grid format.
-Make your photos 1/3, 2/3, or full width.
-
-To give your project a background in the portfolio page, just add the img tag to the front matter like so:
-
-    ---
-    layout: page
-    title: project
-    description: a project with a background image
-    img: /assets/img/12.jpg
-    ---
-
-<div class="row">
-    <div class="col-sm mt-3 mt-md-0">
-        {% include figure.html path="assets/img/1.jpg" title="example image" class="img-fluid rounded z-depth-1" %}
-    </div>
-    <div class="col-sm mt-3 mt-md-0">
-        {% include figure.html path="assets/img/3.jpg" title="example image" class="img-fluid rounded z-depth-1" %}
-    </div>
-    <div class="col-sm mt-3 mt-md-0">
-        {% include figure.html path="assets/img/5.jpg" title="example image" class="img-fluid rounded z-depth-1" %}
-    </div>
-</div>
-<div class="caption">
-    Caption photos easily. On the left, a road goes through a tunnel. Middle, leaves artistically fall in a hipster photoshoot. Right, in another hipster photoshoot, a lumberjack grasps a handful of pine needles.
-</div>
-<div class="row">
-    <div class="col-sm mt-3 mt-md-0">
-        {% include figure.html path="assets/img/5.jpg" title="example image" class="img-fluid rounded z-depth-1" %}
-    </div>
-</div>
-<div class="caption">
-    This image can also have a caption. It's like magic.
-</div>
-
-You can also put regular text between your rows of images.
-Say you wanted to write a little bit about your project before you posted the rest of the images.
-You describe how you toiled, sweated, *bled* for your project, and then... you reveal its glory in the next row of images.
-
-
-<div class="row justify-content-sm-center">
-    <div class="col-sm-8 mt-3 mt-md-0">
-        {% include figure.html path="assets/img/6.jpg" title="example image" class="img-fluid rounded z-depth-1" %}
-    </div>
-    <div class="col-sm-4 mt-3 mt-md-0">
-        {% include figure.html path="assets/img/11.jpg" title="example image" class="img-fluid rounded z-depth-1" %}
-    </div>
-</div>
-<div class="caption">
-    You can also have artistically styled 2/3 + 1/3 images, like these.
-</div>
-
-
-The code is simple.
-Just wrap your images with `<div class="col-sm">` and place them inside `<div class="row">` (read more about the <a href="https://getbootstrap.com/docs/4.4/layout/grid/">Bootstrap Grid</a> system).
-To make images responsive, add `img-fluid` class to each; for rounded corners and shadows use `rounded` and `z-depth-1` classes.
-Here's the code for the last row of images above:
-
-{% raw %}
-```html
-<div class="row justify-content-sm-center">
-    <div class="col-sm-8 mt-3 mt-md-0">
-        {% include figure.html path="assets/img/6.jpg" title="example image" class="img-fluid rounded z-depth-1" %}
-    </div>
-    <div class="col-sm-4 mt-3 mt-md-0">
-        {% include figure.html path="assets/img/11.jpg" title="example image" class="img-fluid rounded z-depth-1" %}
-    </div>
-</div>
 ```
-{% endraw %}
+output:
+  word_document: default
+  html_document: default
+  pdf_document: default
+bibliography: bibliography.bib
+---
+# Markdown Basics
+
+## Favorite Foods
+Favorite Foods
+1. Fruit (all fruit)  
+2. Sweet Potatoes  
+3. Peas  
+
+## Add a Quote
+"You are not entitled to your opinion.  
+You are entitled to your informed opinion.  
+No one is entitled to be ignorant."
+  
+Harlan Ellison
+
+## Add an Equation
+$$ y = mx + b $$
+
+## Add a Footnote
+
+Read the footnote [^1].
+
+[^1]: Footnotes are better than endnotes.
+
+## Add Citations
+
+* R for Everyone [@lander2014r]
+* Discovering Statistics Using R [@field2012discovering]
+
+# Inline Code
+
+```{r include = FALSE}
+
+## Load the ggplot2 package
+library(ggplot2)
+theme_set(theme_minimal())
+
+## Set the working directory to the root of your DSC 520 directory
+setwd("c:/GitHub/DSC520/Cloned_DSC520")
+
+## Load the `data/r4ds/heights.csv` to
+heights_df <- read.csv("data/r4ds/heights.csv")
+
+## Load the file `"data/nytimes/covid-19-data/us-states.csv"` and
+## assign it to the `covid_df` dataframe
+covid_df <- read.csv("data/nytimes/covid-19-data/us-states.csv")
+
+## Create three dataframes named `california_df`, `ny_df`, and `florida_df`
+## containing the data from California, New York, and Florida
+california_df <- covid_df[ which( covid_df$state == "California"), ]
+ny_df <- covid_df[ which( covid_df$state == "New York"), ]
+florida_df <- covid_df[ which( covid_df$state == "Florida"), ]
+```
+## NY Times COVID-19 Data
+```{r echo = FALSE}
+
+## Scale the y axis using `scale_y_log10()`
+ggplot(data = florida_df, aes(x = date, group=1)) +
+  geom_line(aes(y = cases, colour = "Florida")) +
+  geom_line(data=ny_df, aes(y = cases,colour="New York")) +
+  geom_line(data=california_df, aes(y = cases, colour="California")) +
+  scale_colour_manual("",
+                      breaks = c("Florida", "New York", "California"),
+                      values = c("darkred", "darkgreen", "steelblue")) +
+  xlab(" ") + ylab("Cases") + scale_y_log10(label = scales::comma)
+```
+
+## R4DS Height vs Earnings
+```{r echo = FALSE}
+ggplot(heights_df, aes(x = height, y = earn, col = factor(sex))) + geom_point() + ggtitle('Height vs. Earnings') + xlab('Height (Inches)') + ylab('Earnings (Dollars)')
+```
+
+# Tables
+
+## Knitr Table with Kable
+```{r echo = FALSE}
+library(knitr)
+setwd("c:/GitHub/DSC520/Cloned_DSC520")
+
+## Create a dataframe called characters_df using the following information from LOTR
+name <- c("Aragon", "Bilbo", "Frodo", "Galadriel", "Sam", "Gandalf", "Legolas", "Sauron", "Gollum")
+race <- c("Men", "Hobbit", "Hobbit", "Elf", "Hobbit", "Maia", "Elf", "Maia", "Hobbit")
+in_fellowship <- c(TRUE, FALSE, TRUE, FALSE, TRUE, TRUE, TRUE, FALSE, FALSE)
+ring_bearer <- c(FALSE, TRUE, TRUE, FALSE, TRUE, TRUE, FALSE, TRUE, TRUE)
+age <- c(88, 129, 51, 7000, 36, 2019, 2931, 7052, 589)
+
+characters_df <- data.frame(name, race, in_fellowship, ring_bearer, age)
+
+knitr::kable(characters_df, "simple", caption = "ONE RING TO RULE THEM ALL")
+```
+
+## Pandoc Table
++-----------+-----------+----------------+-----------------+---------+
+| Name      | Race      | In Fellowship? | Is Ring Bearer? | Age     |
++===========+===========+================+=================+=========+
+| Aragon    | Men       | Yes            | No              | 88      |
++-----------+-----------+----------------+-----------------+---------+
+| Bilbo     | Hobbit    | No             | Yes             | 129     |
++-----------+-----------+----------------+-----------------+---------+
+| Frodo     | Hobbit    | Yes            | Yes             | 51      |
++-----------+-----------+----------------+-----------------+---------+
+| Sam       | Hobbit    | Yes            | Yes             | 36      |
++-----------+-----------+----------------+-----------------+---------+
+| Sauron    | Maia      | No             | Yes             | 7052    |
++-----------+-----------+----------------+-----------------+---------+
+```
