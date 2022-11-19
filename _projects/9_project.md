@@ -3,7 +3,7 @@ layout: page
 title: Image Processing
 description: TensorFlow for image recognition
 redirect: none
-img: /assets/img/9.jpg
+img: /assets/img/12.jpg
 importance: 4
 category: python
 ---
