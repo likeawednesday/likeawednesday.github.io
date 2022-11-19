@@ -48,21 +48,19 @@
       institution: Madison Tanning Company
       year: 2010 - 2012
 
-- title: Academic Interests
+- title: Skills
   type: nested_list
   contents:
-    - title: Ethics
-      items: 
-        - Description 1.
-        - Description 2.
-    - title: History
-      items:
-        - Description 1.
-        - Description 2.
-    - title: Communicating about finance and technology
-      items:
-        - Description 1.
-        - Description 2.
+    - title: Python
+    - title: R
+    - title: SQL
+    - title: Power BI
+    - title: Microstrategy
+    - title: ProSystems Engagement
+    - title: CCH Axcess/ProSystems fx Tax
+    - title: Asset Keeper
+    - title: QuickBooks
+
 
 - title: Other Interests
   type: list
