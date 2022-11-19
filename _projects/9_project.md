@@ -5,5 +5,5 @@ description: TensorFlow for image recognition
 redirect: none
 img: /assets/img/12.jpg
 importance: 4
-category: python
+category: Python
 ---

@@ -4,7 +4,7 @@ title: Python - Gettysburg Text Processing
 description: basic text processing of the Gettysburg Address
 img: assets/img/9.jpg
 importance: 1
-category: python
+category: Python
 ---
 ```
 import string
