@@ -6,14 +6,14 @@ img: assets/img/12.jpg
 importance: 1
 category: work
 ---
-`created in PyCharm`
-import string
 
-contents = []
+`import string`
 
-word_count_dict = {}
+`contents = []`
 
-# Prompt the user for the filename they wish to name their generated report
+`word_count_dict = {}`
+
+`# Prompt the user for the filename they wish to name their generated report
 # Input sanitization
 valid_chars = "-_.() %s%s" % (string.ascii_letters, string.digits)
 output_file = ''.join(c for c in input('Enter output file name: ') if c in valid_chars).strip()
@@ -21,7 +21,7 @@ output_file = ''.join(c for c in input('Enter output file name: ') if c in valid
 if output_file.endswith('.txt'):
     output_file = output_file
 else:
-    output_file = output_file + '.txt'
+    output_file = output_file + '.txt'`
 
 
 # to add word to dictionary
