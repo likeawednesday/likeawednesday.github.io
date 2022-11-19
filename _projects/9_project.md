@@ -1,8 +1,8 @@
 ---
 layout: page
-title: Customer Segmentation
-description: segmentation with supervised and unsupervised algorithms
-img:
+title: Image Processing
+description: TensorFlow for image recognition
+img: /assets/img/12.jpg
 importance: 4
 category: fun
 ---

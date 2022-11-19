@@ -1,80 +1,86 @@
 ---
 layout: page
-title: SQLite
-description: BeautifulSoup, sqlite basic query
-img:
+title: R Basics II
+description: R Basics code
+img: assets/img/6.jpg
 importance: 3
 category: fun
 ---
 
-Every project has a beautiful feature showcase page.
-It's easy to include images in a flexible 3-column grid format.
-Make your photos 1/3, 2/3, or full width.
-
-To give your project a background in the portfolio page, just add the img tag to the front matter like so:
-
-    ---
-    layout: page
-    title: project
-    description: a project with a background image
-    img: /assets/img/12.jpg
-    ---
-
-<div class="row">
-    <div class="col-sm mt-3 mt-md-0">
-        {% include figure.html path="assets/img/1.jpg" title="example image" class="img-fluid rounded z-depth-1" %}
-    </div>
-    <div class="col-sm mt-3 mt-md-0">
-        {% include figure.html path="assets/img/3.jpg" title="example image" class="img-fluid rounded z-depth-1" %}
-    </div>
-    <div class="col-sm mt-3 mt-md-0">
-        {% include figure.html path="assets/img/5.jpg" title="example image" class="img-fluid rounded z-depth-1" %}
-    </div>
-</div>
-<div class="caption">
-    Caption photos easily. On the left, a road goes through a tunnel. Middle, leaves artistically fall in a hipster photoshoot. Right, in another hipster photoshoot, a lumberjack grasps a handful of pine needles.
-</div>
-<div class="row">
-    <div class="col-sm mt-3 mt-md-0">
-        {% include figure.html path="assets/img/5.jpg" title="example image" class="img-fluid rounded z-depth-1" %}
-    </div>
-</div>
-<div class="caption">
-    This image can also have a caption. It's like magic.
-</div>
-
-You can also put regular text between your rows of images.
-Say you wanted to write a little bit about your project before you posted the rest of the images.
-You describe how you toiled, sweated, *bled* for your project, and then... you reveal its glory in the next row of images.
-
-
-<div class="row justify-content-sm-center">
-    <div class="col-sm-8 mt-3 mt-md-0">
-        {% include figure.html path="assets/img/6.jpg" title="example image" class="img-fluid rounded z-depth-1" %}
-    </div>
-    <div class="col-sm-4 mt-3 mt-md-0">
-        {% include figure.html path="assets/img/11.jpg" title="example image" class="img-fluid rounded z-depth-1" %}
-    </div>
-</div>
-<div class="caption">
-    You can also have artistically styled 2/3 + 1/3 images, like these.
-</div>
-
-
-The code is simple.
-Just wrap your images with `<div class="col-sm">` and place them inside `<div class="row">` (read more about the <a href="https://getbootstrap.com/docs/4.4/layout/grid/">Bootstrap Grid</a> system).
-To make images responsive, add `img-fluid` class to each; for rounded corners and shadows use `rounded` and `z-depth-1` classes.
-Here's the code for the last row of images above:
-
-{% raw %}
-```html
-<div class="row justify-content-sm-center">
-    <div class="col-sm-8 mt-3 mt-md-0">
-        {% include figure.html path="assets/img/6.jpg" title="example image" class="img-fluid rounded z-depth-1" %}
-    </div>
-    <div class="col-sm-4 mt-3 mt-md-0">
-        {% include figure.html path="assets/img/11.jpg" title="example image" class="img-fluid rounded z-depth-1" %}
-    </div>
-</div>
 ```
-{% endraw %}
+# Set the working directory to the root of your DSC 520 directory
+setwd("c:/GitHub/DSC520")
+
+# Load the from American Community Survey Exercise
+housing <- read.csv("Housing.csv")
+str(housing)
+
+
+# Using the dplyr package, use the 6 different operations to analyze/transform the data
+# Remember this isn't just modifying data, you are learning about your data also
+#   play around and start to understand your dataset in more detail
+library(dplyr)
+
+# Mutate
+# Select
+# Arrange
+mutated <- housing %>% select(1, 2, 8, 14:19, 21, 22) %>% mutate(Price_per_SqFt = Sale.Price / square_feet_total_living)
+print(mutated)
+arranged <- arrange(mutated, desc(Price_per_SqFt))
+print(arranged)
+head(arranged, 20)
+tail(arranged, n=20)
+
+
+# Filter
+filtered <- filter(arranged, square_feet_total_living > 3000, bedrooms >= 4, sq_ft_lot >= 10000)
+print(filtered)
+
+# GroupBy
+# Summarize
+sumz_data <-filtered %>%
+  group_by(year_built) %>%
+  summarize(Average_Price = mean(Sale.Price), Avg_Price_per_SqFt = mean(Price_per_SqFt), Houses_Sold = n())
+nrow(sumz_data)
+print(head(sumz_data, 20))
+print(tail(sumz_data, 20))
+
+
+# Using the purrr package - perform 2 functions on your dataset
+# You could use zip_n, keep, discard, compact, etc.
+library(purrr)
+compact(housing$sale_warning)
+housing$Sale.Price %>% map(sum)
+
+
+# Use the cbind and rbind function on your dataset
+# total_bath recycled from my last week's code but modified for mutated
+
+# cbind
+total_bath <- mutated$bath_full_count + mutated$bath_3qtr_count + mutated$bath_half_count
+mutated <- cbind(mutated, total_bath)
+head(mutated)
+
+# rbind
+new_sales <- c(2019, 846275, 52, 12)
+new_sumz <- rbind(sumz_data, new_sales)
+print(new_sumz)
+head(new_sumz, 20)
+tail(new_sumz, 20)
+
+
+# Split a string
+# Then concatenate the results back together
+library(stringr)
+address <- str_split(housing$addr_full, pattern = " ")
+head(address)
+
+address_mat <- data.frame(Reduce(rbind, address))
+print(address_mat)
+
+house_num <- address_mat$X1
+print(house_num)
+
+street_ad <- paste(address_mat$X1, " ", address_mat$X2, " ",address_mat$X3, " ", address_mat$X4)
+print(street_ad)
+```

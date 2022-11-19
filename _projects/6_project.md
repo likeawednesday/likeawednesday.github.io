@@ -1,8 +1,8 @@
 ---
 layout: page
-title: Sentiment analysis
-description: text analysis - review classifier
-img: assets/img/1.jpg
+title: SQLite
+description: BeautifulSoup, sqlite basic query
+img:
 importance: 3
 category: fun
 ---
