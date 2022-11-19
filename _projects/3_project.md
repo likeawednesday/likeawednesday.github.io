@@ -3,7 +3,6 @@ layout: page
 title: Python - Weather Lookup
 description: simple weather lookup
 img: assets/img/7.jpg
-redirect: none
 importance: 3
 category: python
 ---
