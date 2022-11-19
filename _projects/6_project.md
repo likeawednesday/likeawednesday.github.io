@@ -2,9 +2,9 @@
 layout: page
 title: SQLite
 description: BeautifulSoup, sqlite basic query
-img:
+img: assets/img/8.jpg
 importance: 3
-category: fun
+category: mixed
 ---
 
 Every project has a beautiful feature showcase page.
