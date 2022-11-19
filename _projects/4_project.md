@@ -4,7 +4,7 @@ title: R Basics
 description: basics of R libraries, mutating, selection, binds, splits, concat
 img: assets/img/7.jpg
 redirect: none
-importance: 3
+importance: 4
 category: work
 ---
 
