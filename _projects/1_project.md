@@ -6,24 +6,25 @@ img: assets/img/12.jpg
 importance: 1
 category: work
 ---
+```
 import string
 
 contents = []
 
 word_count_dict = {}
 
-`# Prompt the user for the filename they wish to name their generated report`
-`# Input sanitization`
+# Prompt the user for the filename they wish to name their generated report
+# Input sanitization
 valid_chars = "-_.() %s%s" % (string.ascii_letters, string.digits)
 output_file = ''.join(c for c in input('Enter output file name: ') if c in valid_chars).strip()
-`# to save as .txt file`
+# to save as .txt file
 if output_file.endswith('.txt'):
     output_file = output_file
 else:
     output_file = output_file + '.txt'
 
 
-`# to add word to dictionary`
+# to add word to dictionary
 def add_word(word, wc_dict):
     if word in wc_dict.keys() != '':
         wc_dict[word] += 1
@@ -33,7 +34,7 @@ def add_word(word, wc_dict):
     # no return value
 
 
-`# to strip unnecessary characters and split out words`
+# to strip unnecessary characters and split out words
 def process_line(line, wc_dict):
     line = line.strip()
     word_list = line.split()
@@ -48,7 +49,7 @@ def process_line(line, wc_dict):
     # no return value
 
 
-`# to write to new file rather than print to screen`
+# to write to new file rather than print to screen
 def process_file(wc_dict):  # parameter is dictionary; no return value
     for key, value in wc_dict.items():
         contents.append((key, value))
@@ -76,3 +77,4 @@ def main():
 
 if __name__ == "__main__":
     main()
+```
