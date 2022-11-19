@@ -4,7 +4,7 @@ title: Customer Segmentation
 description: segmentation with supervised and unsupervised algorithms
 img:
 importance: 4
-category: fun
+category: python
 ---
 
 Every project has a beautiful feature showcase page.

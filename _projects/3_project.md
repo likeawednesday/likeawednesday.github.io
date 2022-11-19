@@ -5,7 +5,7 @@ description: simple weather lookup
 img: assets/img/7.jpg
 redirect: none
 importance: 3
-category: work
+category: python
 ---
 
 ```

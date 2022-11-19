@@ -4,7 +4,7 @@ title: Image Processing
 description: TensorFlow for image recognition
 img: /assets/img/12.jpg
 importance: 4
-category: fun
+category: python
 ---
 
 Every project has a beautiful feature showcase page.

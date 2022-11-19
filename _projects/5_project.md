@@ -4,7 +4,7 @@ title: R Basics II
 description: R Basics code
 img: assets/img/6.jpg
 importance: 3
-category: fun
+category: R
 ---
 
 ```

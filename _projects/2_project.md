@@ -4,7 +4,7 @@ title: Python - Order Form
 description: order form and receipt
 img: assets/img/3.jpg
 importance: 2
-category: work
+category: python
 ---
 ```
 # Create pretty Welcome

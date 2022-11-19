@@ -5,7 +5,7 @@ description: R basics in markdown
 img: assets/img/2.jpg
 redirect: none
 importance: 4
-category: work
+category: R
 ---
 
 ```
