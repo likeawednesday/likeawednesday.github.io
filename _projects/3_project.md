@@ -1,6 +1,6 @@
 ---
 layout: page
-title: Weather Lookup
+title: Python - Weather Lookup
 description: simple weather lookup
 img: assets/img/7.jpg
 redirect: none
