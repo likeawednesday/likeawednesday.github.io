@@ -6,75 +6,75 @@ img: assets/img/12.jpg
 importance: 1
 category: work
 ---
+`
+import string
 
-Every project has a beautiful feature showcase page.
-It's easy to include images in a flexible 3-column grid format.
-Make your photos 1/3, 2/3, or full width.
+contents = []
 
-To give your project a background in the portfolio page, just add the img tag to the front matter like so:
+word_count_dict = {}
 
-    ---
-    layout: page
-    title: project
-    description: a project with a background image
-    img: /assets/img/12.jpg
-    ---
-
-<div class="row">
-    <div class="col-sm mt-3 mt-md-0">
-        {% include figure.html path="assets/img/1.jpg" title="example image" class="img-fluid rounded z-depth-1" %}
-    </div>
-    <div class="col-sm mt-3 mt-md-0">
-        {% include figure.html path="assets/img/3.jpg" title="example image" class="img-fluid rounded z-depth-1" %}
-    </div>
-    <div class="col-sm mt-3 mt-md-0">
-        {% include figure.html path="assets/img/5.jpg" title="example image" class="img-fluid rounded z-depth-1" %}
-    </div>
-</div>
-<div class="caption">
-    Caption photos easily. On the left, a road goes through a tunnel. Middle, leaves artistically fall in a hipster photoshoot. Right, in another hipster photoshoot, a lumberjack grasps a handful of pine needles.
-</div>
-<div class="row">
-    <div class="col-sm mt-3 mt-md-0">
-        {% include figure.html path="assets/img/5.jpg" title="example image" class="img-fluid rounded z-depth-1" %}
-    </div>
-</div>
-<div class="caption">
-    This image can also have a caption. It's like magic.
-</div>
-
-You can also put regular text between your rows of images.
-Say you wanted to write a little bit about your project before you posted the rest of the images.
-You describe how you toiled, sweated, *bled* for your project, and then... you reveal its glory in the next row of images.
+# Prompt the user for the filename they wish to name their generated report
+# Input sanitization
+valid_chars = "-_.() %s%s" % (string.ascii_letters, string.digits)
+output_file = ''.join(c for c in input('Enter output file name: ') if c in valid_chars).strip()
+# to save as .txt file
+if output_file.endswith('.txt'):
+    output_file = output_file
+else:
+    output_file = output_file + '.txt'
 
 
-<div class="row justify-content-sm-center">
-    <div class="col-sm-8 mt-3 mt-md-0">
-        {% include figure.html path="assets/img/6.jpg" title="example image" class="img-fluid rounded z-depth-1" %}
-    </div>
-    <div class="col-sm-4 mt-3 mt-md-0">
-        {% include figure.html path="assets/img/11.jpg" title="example image" class="img-fluid rounded z-depth-1" %}
-    </div>
-</div>
-<div class="caption">
-    You can also have artistically styled 2/3 + 1/3 images, like these.
-</div>
+# to add word to dictionary
+def add_word(word, wc_dict):
+    if word in wc_dict.keys() != '':
+        wc_dict[word] += 1
+    else:
+        wc_dict[word] = 1
+    # parameters are the word and a dictionary
+    # no return value
 
 
-The code is simple.
-Just wrap your images with `<div class="col-sm">` and place them inside `<div class="row">` (read more about the <a href="https://getbootstrap.com/docs/4.4/layout/grid/">Bootstrap Grid</a> system).
-To make images responsive, add `img-fluid` class to each; for rounded corners and shadows use `rounded` and `z-depth-1` classes.
-Here's the code for the last row of images above:
+# to strip unnecessary characters and split out words
+def process_line(line, wc_dict):
+    line = line.strip()
+    word_list = line.split()
+    for word in word_list:
+        if word != '--':
+            word = word.lower()
+            word = word.strip()
+            word = word.translate(str.maketrans('', '', string.punctuation))
+            add_word(word, wc_dict)
+    # parameters are a line and the dictionary
+    # calls the add_word function with each processed word
+    # no return value
 
-{% raw %}
-```html
-<div class="row justify-content-sm-center">
-    <div class="col-sm-8 mt-3 mt-md-0">
-        {% include figure.html path="assets/img/6.jpg" title="example image" class="img-fluid rounded z-depth-1" %}
-    </div>
-    <div class="col-sm-4 mt-3 mt-md-0">
-        {% include figure.html path="assets/img/11.jpg" title="example image" class="img-fluid rounded z-depth-1" %}
-    </div>
-</div>
-```
-{% endraw %}
+
+# to write to new file rather than print to screen
+def process_file(wc_dict):  # parameter is dictionary; no return value
+    for key, value in wc_dict.items():
+        contents.append((key, value))
+    contents.sort(key=lambda x: x[1], reverse=True)
+    # create file
+    f = open(output_file, 'w')
+    f.write('Length of Dictionary:' + str(len(word_count_dict)) + ' \n')
+    f.write("{0:<12}{1:>10}".format('Word', 'Count\n'))  # heading
+    f.write("-"*22)  # stars
+    for key, value in contents:
+        f.write("\n{0:<12}{1:>10}".format(key, value))  # contents from process_file
+    f.close()
+
+
+def main():
+    with open("gettysburg.txt", "r+") as rf:
+        for line in rf:
+            process_line(line, word_count_dict)
+        # to strip unnecessary characters and split out words
+        process_file(word_count_dict)
+    # open file
+    # call process_line on each line
+    # when done, will call pretty_print to print the dictionary (high to low frequency, using string formatting)
+
+
+if __name__ == "__main__":
+    main()
+`
