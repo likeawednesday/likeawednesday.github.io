@@ -1,9 +1,9 @@
 ---
 layout: page
-title: SQLite
-description: BeautifulSoup, sqlite basic query
+title: Customer Segmentation
+description: segmentation with supervised and unsupervised algorithms
 img:
-importance: 3
+importance: 4
 category: fun
 ---
 

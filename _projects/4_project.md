@@ -1,10 +1,11 @@
 ---
 layout: page
-title: SQLite
-description: BeautifulSoup, sqlite basic query
-img:
+title: R Basics
+description: basics of R libraries, mutating, selection, binds, splits, concat
+img: assets/img/7.jpg
+redirect: none
 importance: 3
-category: fun
+category: work
 ---
 
 Every project has a beautiful feature showcase page.

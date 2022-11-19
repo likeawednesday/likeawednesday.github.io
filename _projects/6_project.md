@@ -1,11 +1,10 @@
 ---
 layout: page
-title: Visualizations
-description: visualizations in Python, R, and Power BI
-img:
-importance: 4
+title: Sentiment analysis
+description: text analysis - review classifier
+img: assets/img/1.jpg
+importance: 3
 category: fun
-cv_pdf: Visualizations_wk4_combined
 ---
 
 Every project has a beautiful feature showcase page.
