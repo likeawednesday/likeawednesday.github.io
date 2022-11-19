@@ -1,6 +1,6 @@
 ---
 layout: page
-title: R Basics
+title: R Basics I
 description: R basics in markdown
 img: assets/img/2.jpg
 redirect: none
