@@ -2,7 +2,7 @@
 layout: about
 title: about
 permalink: /
-subtitle: <a href='#'>Affiliations</a>. Transparency | Analysis | Insight
+subtitle: Transparency | Analysis | Insight
 
 profile:
   align: right
