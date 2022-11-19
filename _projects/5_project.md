@@ -1,6 +1,6 @@
 ---
 layout: page
-title: R Basics II
+title: R Basics non-MD
 description: R Basics code
 img: assets/img/6.jpg
 importance: 3
