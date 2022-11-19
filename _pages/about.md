@@ -8,7 +8,8 @@ profile:
   align: right
   image: my_head.jpg
   image_circular: false # crops the image to make it circular
-  LinkedIn: Find me on [LinkedIn](https://www.linkedin.com/in/erin-howland-03ab0798/)
+  LinkedIn: >
+    Find me on [LinkedIn](https://www.linkedin.com/in/erin-howland-03ab0798/)
 
 news: true  # includes a list of news items
 selected_papers: true # includes a list of papers marked as "selected={true}"
