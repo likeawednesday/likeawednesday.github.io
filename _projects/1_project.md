@@ -6,7 +6,7 @@ img: assets/img/12.jpg
 importance: 1
 category: work
 ---
-`
+`created in PyCharm`
 import string
 
 contents = []
@@ -77,4 +77,3 @@ def main():
 
 if __name__ == "__main__":
     main()
-`
