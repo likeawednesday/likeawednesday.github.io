@@ -1,7 +1,7 @@
 ---
 layout: page
 title: Customer Segmentation
-description: segmentation with supervised and unsupervised algorithms
+description: segmentation with supervised and unsupervised algorithms; includes code and recorded PowerPoint presentation
 redirect: none
 img: assets/img/10.jpg
 importance: 4
