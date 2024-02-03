@@ -1,0 +1,4 @@
+User-agent: *
+Disallow:
+
+Sitemap: https://likeawednesday.github.io/sitemap.xml
